@@ -30,3 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ng server -- run server
 ng g c componet -- create component cmd
+
+// "sslKey": "ssl/server.key",
+// "sslCert": "ssl/server.crt",
+// "ssl": true
