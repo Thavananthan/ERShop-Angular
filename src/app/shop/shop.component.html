@@ -41,20 +41,29 @@
     </section>
     <section class="col-9">
       <div class="d-flex justify-content-between align-items-center pb-2">
-        <header>
-          <span>
-            Showing <strong>10</strong> of <strong>16</strong> Results
-          </span>
-        </header>
+        <app-paging-header
+          [totalCount]="totalCount"
+          [pageSize]="this.shopParams.pageSize"
+          [pageNmuber]="this.shopParams.pageNmuber"
+        ></app-paging-header>
         <div class="form-inline mt-2">
           <input
+            (keyup)="onSearch()"
             class="from-control mx-2"
             style="width: 300px"
+            #search
             placeholder="Search"
             type="text"
           />
-          <button class="btn btn-outline-primary my-2 mx-1">Search</button>
-          <button class="btn btn-outline-success my-2 mx-1">Reset</button>
+          <button
+            (click)="onSearch()"
+            class="btn btn-outline-primary my-2 mx-1"
+          >
+            Search
+          </button>
+          <button (click)="onReset()" class="btn btn-outline-success my-2 mx-1">
+            Reset
+          </button>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -62,18 +71,12 @@
           <app-product-item [product]="item"></app-product-item>
         </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <pagination
-          [boundaryLinks]="true"
-          [totalItems]="this.totalCount"
+      <div class="d-flex justify-content-center" *ngIf="totalCount > 0">
+        <app-pager
+          [totalCount]="totalCount"
+          [pageSize]="this.shopParams.pageSize"
           (pageChanged)="onPageChnaged($event)"
-          [itemsPerPage]="this.shopParams.pageSize"
-          previousText="&lsaquo;"
-          nextText="&rsaquo;"
-          firstText="<<"
-          lastText=">>"
-        >
-        </pagination>
+        ></app-pager>
       </div>
     </section>
   </div>
