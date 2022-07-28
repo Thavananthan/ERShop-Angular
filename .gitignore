@@ -5,3 +5,5 @@ appsettings.json
 *.DS_Store
 /node_modules
 /ssl
+yarn.lock
+package-lock.json
